@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Class Test</title>
+    </head>
+    <body>
+        <script>
+            class Computer {
+                constructor(name) {
+                    this.brand = name;
+                }
+                present() {
+                    return "I have a " + this.brand;
+                }
+            }
+            class OS extends Computer {
+                constructor(name, mod) {
+                    super(name);
+                    this.operating = mod;
+                }
+                show () {
+                    return this.present() + ', and it is a ' + this.operating;
+                }
+            }
+            const mypc = new OS("HP","Windows");
+            document.body.textContent = mypc.show();
+        </script>
+    </body>
+</html>

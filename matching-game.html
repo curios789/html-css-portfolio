@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Matching Game</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&&family=Bree+Serif&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: #dfb6a3;
+            }
+            img {
+                position: absolute;
+            }
+            #gameBoard div {
+                position: absolute;
+                height: 500px;
+                width: 500px
+            }
+            #rightSide {
+                left: 500px;
+                border-left: 1px solid black;
+            }
+            #toolBar {
+                background: #e92736;
+                border: 1px solid #b92813;
+                border-radius: 4px;
+                display: flex;
+                padding: 10px;
+                align-content: center;
+                font-size: 30px;
+            }
+            #slide {
+                flex-grow: 1;
+            }
+            #button {
+                flex-grow: 3;
+            }
+            #slide label {
+                font-family: 'Fredoka One', cursive;
+                color: #e8e8e8;
+            }
+            #scoreboard {
+                flex-grow: 4;
+                padding-right: 20px;
+                text-align: right;
+                font-size: 30px;
+                font-family: 'Fredoka One', cursive;
+                color: #e8e8e8;
+            }
+            #timer {
+                font-family: 'Fredoka One', cursive;
+                color: #e8e8e8;
+            }
+            h1 {
+                text-align: center;
+            }
+            p {
+                font-family: 'Bree Serif';
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Matching Game</h1>
+        <p>Instructions: Find the extra face on the left side. You may use the slider at any point in the game to change the difficulty of the game. <span style="color: red;">EXTREME MODE:</span> You will be timed. You have 5 seconds to make your guess, or you LOSE. Good luck!</p>
+        <div id="toolBar">
+            <div id="slide">
+                <label for="difficulty">Difficulty: </label><input type="range" min="2" max="8" name='difficulty' value='5' step='1' id='difficulty' onmouseup="updateDifficulty()"/><label for="extreme"> EXTREME MODE</label> <input type="checkbox" id="extreme" name="extreme" />
+            </div>
+            <div id="button">
+                <input type="button" onclick="generateFaces()" id='gameButton' value='Play Game'/>
+            </div>
+            <div id="timer">Timer: <span id="timerText">5</span></div>
+            <div id="scoreboard">Score: <span id="score">0</span></div>
+        </div>
+        <div id="gameBoard">
+            <div id='leftSide'></div>
+            <div id='rightSide'></div>
+        </div>
+        <script type="text/javascript">
+            updateDifficulty();
+            let numberOfFaces = +difficultyString;
+            let score = 0;
+            let timer = 0;
+            let y = 5;
+            let interval = 0;
+            let extreme = false;
+            const theLeftSide = document.body.querySelector('#leftSide');
+            const theRightSide = document.body.querySelector('#rightSide');
+            function generateFaces(){
+                extreme = document.body.querySelector("#extreme").checked;
+                if (extreme) { // EXTREME MODE!
+                   timer = setTimeout(gameOver,5000);
+                   interval = setInterval(function () {
+                       y--;
+                        document.body.querySelector("#timerText").textContent = y;
+                   }, 1000); // UPDATE THE TIMER EVERY SECOND
+                }
+                updateDifficulty();
+                document.body.querySelector("#gameButton").disabled = true;
+                for (i = 0; i < numberOfFaces; i++) {
+                    let face = document.createElement('img');
+                    face.src = "https://learn.nucamp.co/pluginfile.php/619/mod_assign/intro/smile.png";
+                    let randomTop = Math.floor(Math.random() * 400);
+                    let randomLeft = Math.floor(Math.random() * 400);
+                    face.style.top = randomTop + "px";
+                    face.style.left = randomLeft + "px";
+                    theLeftSide.appendChild(face);
+                }
+                const leftSideImages = theLeftSide.cloneNode(true);
+                let gameSolution = theLeftSide.lastChild;
+                gameSolution.addEventListener("click", nextLevel);
+                document.getElementById("gameBoard").addEventListener("click", gameOver);
+                leftSideImages.removeChild(leftSideImages.lastChild);
+                theRightSide.appendChild(leftSideImages);
+               
+            }
+           function nextLevel() {
+            clearTimeout(timer);
+            clearInterval(interval);
+            y = 5;
+            document.body.querySelector("#timerText").textContent = y;
+            event.stopPropagation();
+            removeAllChildNodes(theLeftSide);
+            removeAllChildNodes(theRightSide);
+            difficultyString = document.querySelector("#difficulty").value;
+            difficulty = +difficultyString;
+                let newfaces = numberOfFaces + difficulty;
+                numberOfFaces = +numberOfFaces;
+              numberOfFaces += difficulty;
+              score += 1;
+              document.body.querySelector("#score").textContent = score;
+            generateFaces();
+            }
+            function gameOver(event) {
+                if (!extreme) { // This checks to see if extreme mode is off - There is no event to propagate if it runs out of time.
+                event.stopPropagation();
+                }
+                clearTimeout(timer);
+                clearInterval(interval);
+                y = 5;
+                document.body.querySelector("#timerText").textContent = y;
+                alert("Game Over");
+                document.getElementById("gameBoard").removeEventListener("click", gameOver);
+                theLeftSide.lastChild.removeEventListener("click", nextLevel);
+                removeAllChildNodes(theLeftSide);
+                removeAllChildNodes(theRightSide);
+                document.body.querySelector("#gameButton").disabled = false;
+                score = 0;
+                updateDifficulty();
+                numberOfFaces = +difficultyString;
+            }
+            function removeAllChildNodes(parent) {
+                while (parent.firstElementChild) {
+                    parent.removeChild(parent.firstElementChild);
+                 }
+            }
+            function updateDifficulty() {
+                difficultyString = document.body.querySelector("#difficulty").value;
+            }
+        </script>
+    </body>
+</html>

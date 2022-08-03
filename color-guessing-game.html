@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Color Guessing Game</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit|Tajawal">
+        <style>
+            h1 { 
+                text-align: center;
+                font-family: Tajawal;
+            }
+            input[type="button"] {
+                border-left: 2px solid slateblue;
+                border-top: 2px solid slateblue;
+                border-right: 1px solid lightblue;
+                border-bottom: 1px solid lightblue;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                text-shadow: 2px 2px #00000055;
+                padding: 10px;
+                background:darkcyan;
+            }
+            input[type="button"]:hover {
+                background: teal;
+                cursor: pointer;
+            }
+            div {
+                text-align: center;
+            }
+            #won {
+                font-family:"Outfit";
+            }
+            #won > #guess{ font-weight: bolder}
+            #winningMessage {
+                display: none;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class='gameHeader'>Color Guessing Game</h1>
+        <div id="winningMessage">
+        <p id="won">Congratulations on winning the game! This is guess number <span id="guess">1</span></p>
+        <img src="https://media3.giphy.com/media/lMameLIF8voLu8HxWV/giphy.gif?cid=ecf05e47fer4qx0whkbg0wnbqa8suqofpagp8plopomjlfwb&rid=giphy.gif" alt='celebration' />
+    </div>
+        <div>
+        <input type='button' value="Make a Guess!" onclick="runGame()" />
+        </div>
+        <script type="text/javascript">
+            const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+            let guessNumber = 1;
+            function runGame() {
+                let correct = false;
+                let guess = "";
+                const target = Math.floor(Math.random() * (COLORS_ARRAY.length - 1));
+                do {
+                    document.getElementById('guess').textContent = guessNumber;
+                    guess = prompt("I'm thinking of a color!\n" + COLORS_ARRAY.join(", ") + "\nCan you guess which one? This is guess number " + guessNumber + ".")
+                    if (guess == null) { return }
+                    correct = checkGuess(guess, target);
+                } while (!correct);
+            }
+            function checkGuess(guess, target) {
+                let correct = false;
+                guessNumber += 1;
+                guess = guess.toLowerCase();
+                if (COLORS_ARRAY.includes(guess) == false) {
+                    alert("You did not guess one of the colors listed. Try again.");
+                } else if (guess > COLORS_ARRAY[target]) {
+                    alert("Incorrect. Guess lower.");
+                } else if (guess < COLORS_ARRAY[target]) {
+                    alert("Incorrect. Guess higher.");
+                } else {
+                    alert("You won!");
+                    document.body.style.background = guess;
+                    document.getElementById('winningMessage').style.display = "block";
+                    correct = true;
+                }
+                return correct;
+            }
+        </script>
+    </body>
+</html>

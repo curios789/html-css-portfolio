@@ -1,0 +1,124 @@
+html {
+height: 100%;
+margin: 0;
+}
+body { 
+    height: 100%;
+    font-family: "Tajawal", sans-serif;
+    background:linear-gradient(#eee, #ccc);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h1 {
+    text-align: center;
+    color:royalblue;
+    text-shadow: #cccccc55 1px 1px;
+}
+#profileHead {
+    display: grid;
+    grid-template-columns: 200px 100fr;
+    grid-template-rows: 200px 50px 50px;
+    border: 1px solid #ccc;
+    background-color: paleturquoise;
+    margin: 10px; 
+    padding: 10px;
+    border-radius: 4px;
+}
+#profilePic {
+    border-radius: 4px; 
+}
+#aboutMe {
+    grid-column: 2;
+    padding: 0 1em;
+}
+#links {
+    grid-row-start: 2;
+}
+#links a, #links a:visited {
+    text-decoration: none;
+}
+#links a:hover {
+    color: lightseagreen;
+}
+.musica {
+    grid-row-start:3;
+}
+#profileBody {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 200px 200px 200px 200px;
+}
+#interests {
+    grid-column: 1;
+    grid-row: 1;
+}
+#interests ul {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#events {
+    grid-row: 2;
+}
+.singleEvent {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+.singleEvent p {
+    order: 3;
+}
+.dateContain {
+    order: 1;
+    padding: 2px;
+    border: 1px solid #1e2031;
+    border-radius: 2px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background-color:slateblue;
+    color: white;
+}
+.dateContain .eventMonth {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.dateContain .eventDate {
+    font-size: 2em;
+}
+.singleEvent h3 {
+    order: 2;
+    padding-left: 1em;
+}
+#feed {
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+.post {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+.post h3 {
+    color: royalblue;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.post .date {
+    color: #444;
+    font-size: .8rem;
+    font-style: italic;
+}
+.post img {
+    max-width: 100%;
+}
+
+}
