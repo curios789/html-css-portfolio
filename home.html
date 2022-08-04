@@ -1,51 +1,84 @@
 <!DOCTYPE html>
 
 <head>
-    <style type="text/css">
-        header {
-            min-height: 200px;
-        }
-
-        nav {
-            padding: 10px;
-        }
-
-        nav a,
-        nav a:visited {
-            text-decoration: none;
-            padding: 10px;
-            background-color: #008040;
-            transition: background-color .5s;
-        }
-
-        nav a:hover {
-            background-color: #004000;
-        }
-    </style>
+    <script src="https://kit.fontawesome.com/44644925f0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Markazi+Text&family=Open+Sans&family=Rubik:wght@700&family=Source+Sans+Pro:wght@900&display=swap"
+        rel="stylesheet">
+    <link href="css/portfolio.css" rel="stylesheet" />
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="htmlcss.html">HTML/CSS</a>
-            <a href="react.html">React/Redux</a>
-            <a href="contact.html">Contact Me</a>
+            <a href="#html">HTML/CSS</a>
+            <a href="#react">REACT/REDUX</a>
+            <a href="#resume">RESUME</a>
+            <a href="#contact">CONTACT ME</a>
         </nav>
     </header>
-    <section>
-        <h1>Welcome to my Portfolio!</h1>
-        <p>I'm a full-stack web developer located in Wisconsin, looking for full-time remote work, and also always open
-            to collab! I specialize in the following tech stacks:</p>
+    <section class="fullpage">
+        <h1>Hi, my name is David Umstot, a full-stack developer.</h1>
+        <img src="images/profile_pic.webp" alt="David Umstot" width="300" />
+        <p>I'm located in Hales Corners, Wisconsin and I'm looking for a full-time remote position. Let me know if you
+            want to work together!</p>
+    </section>
+    <section class="stacks" id="resume">
+        <h2>RESUME</h2>
+        <h3>I specialize in the following tech:</h3>
         <ul>
-            <li>HTML/CSS/SASS</li>
-            <li>Javascript (Vanilla)</li>
-            <li>ReactJS/Redux</li>
-            <li>PHP</li>
-            <li>MySQL/PostgreSQL</li>
-            <li>Wordpress</li>
+            <li><i class="fab fa-html5"></i>HTML</li>
+            <li><i class="fab fa-css3-alt"></i>CSS/SASS</li>
+            <li><i class="fab fa-js"></i>Javascript (Vanilla)</li>
+            <li><i class="fab fa-react"></i>ReactJS/Redux</li>
+            <li><i class="fab fa-php"></i>PHP</li>
+            <li><i class="fab fa-python"></i>Python</li>
+            <li><i class="fa fa-database" aria-hidden="true"></i>MySQL/PostgreSQL</li>
+            <li><i class="fab fa-wordpress"></i>Wordpress</li>
         </ul>
-        <p>If you're interested in doing any collab projects with me, please contact me and let me know! Otherwise,
-            welcome to my portfolio!</p>
+        <span class="resume-download">
+            <a href="resume.pdf">
+                <img src='images/pdf.png' width="50" alt="Download My Full Resume">
+
+                Download my full resume!
+            </a>
+        </span>
+    </section>
+    <section class='current'>
+        <h1>What I'm currently working on....</h1>
+    </section>
+    <section class="html" id="html">
+        <h2 class="animate">HTML/CSS WORK</h2>
+    </section>
+    <section class="react" id="react">
+        <h2>REACT WORK</h2>
+    </section>
+    <section class="contact" id="contact">
+        <h1>CONTACT ME</h1>
+        <p>If you're interested in doing any collab projects with me, please contact me and let me know!
+            Otherwise, welcome to my portfolio!</p>
+        <div class="formContainer">
+            <form>
+                <input type="text" placeholder="Full Name" />
+                <input type="email" name="email" type="email" placeholder="you@domain.com" />
+
+                <input type="radio" name="whatareyou" id="recruiter" value="recruiter" />
+                <label for="recruiter">Recruiter</label>
+
+                <input type="radio" name="whatareyou" value="developer" />
+                <label for="developer">Developer</label>
+
+                <input type="radio" name="whatareyou" value="employer" />
+                <label for="employer">Direct Employer</label>
+
+                <input type="radio" name="whatareyou" value="client" />
+                <label for="client">Potential Client</label>
+                <textarea name="message" id="message">Type your message...</textarea>
+                <button type="submit" class="contact_button">Send me a note!</button>
+            </form>
+        </div>
     </section>
     <footer>
         <ul>
@@ -54,4 +87,18 @@
             <li>Facebook</li>
         </ul>
     </footer>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            // Loop over the entries
+            entries.forEach(entry => {
+                // If the element is visible
+                if (entry.isIntersecting) {
+                    // Add the animation class
+                    entry.target.classList.add('slideIn');
+                }
+            });
+        });
+        console.log(document.querySelector('.animate'))
+        observer.observe(document.querySelector('.animate'));
+    </script>
 </body>

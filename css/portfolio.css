@@ -1,0 +1,231 @@
+html,
+body {
+    font-family: "Markazi Text";
+    padding: 0px;
+    margin: 0px;
+}
+
+nav {
+    padding: 20px;
+    background-color: #23343f;
+    border-bottom: 3px solid orangered;
+    position: sticky;
+    top: 0px;
+}
+
+nav a,
+nav a:visited {
+    font-family: "Rubik", sans-serif;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #008040;
+    transition: background-color .5s;
+    color: white;
+    border-radius: 2px;
+    margin: 4px;
+}
+
+nav a:hover {
+    background-color: #004000;
+}
+
+section {
+    font-size: 24px;
+}
+
+.fullpage {
+    text-align: center;
+    min-height: 100%;
+    margin: 0;
+    padding: 100px 20px;
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-size: 10px 10px;
+    background-image: repeating-linear-gradient(45deg, #ccc 0, #cccc 1px, #e5e5f7 0, #e5e5f7 50%);
+}
+
+.fullpage h1 {
+    margin: 0 0 20px 0;
+}
+
+
+.stacks {
+    background-color: #ffff80;
+    padding: 100px 20px;
+}
+
+.stacks ul {
+    padding: 20px 10px;
+    margin: 0;
+}
+
+.stacks li {
+    list-style-type: none;
+    font-family: "Rubik";
+}
+
+.stacks i {
+    margin-right: 10px;
+}
+
+.fa-html5 {
+    color: orangered;
+}
+
+.fa-css3-alt,
+.fa-react {
+    color: #0080c0;
+}
+
+.fa-js {
+    color: #c6c600;
+}
+
+.fa-php {
+    color: #787CB5;
+}
+
+.fa-wordpress {
+    color: #21759b;
+}
+
+.fa-database {
+    color: #444;
+}
+
+.fa-python {
+    color: #3776ab;
+}
+
+.resume-download {
+    display: flex;
+    justify-content: center;
+
+}
+
+.resume-download a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.contact {
+    background-color: #23343f;
+    max-width: 100%;
+    padding: 100px 20px;
+}
+
+.contact h1 {
+    text-align: center;
+    font-family: "Source Sans Pro";
+    font-weight: bolder;
+    color: white;
+}
+
+.contact p {
+    text-align: center;
+    color: #bbb;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact form {
+    flex: 1;
+    max-width: 300px;
+}
+
+.contact form input[type='text'],
+.contact form input[type='email'] {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    margin: 2px;
+    background-color: #222;
+    color: white;
+    width: 100%;
+}
+
+textarea {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    margin: 2px;
+    background-color: #222;
+    color: white;
+    width: 100%;
+    height: 100px;
+}
+
+.contact form label {
+    font-size: 18px;
+    color: white;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    border-top: 3px solid orangered;
+}
+
+footer ul {
+    margin: 0;
+}
+
+h2 {
+    font-family: "Source Sans Pro";
+    text-align: center;
+}
+
+.html,
+.react {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.html {
+    background-color: #ddd;
+}
+
+.slideIn {
+    animation: slideIn 0.8 ease both;
+}
+
+.react {
+    background-color: #ccc;
+}
+
+.contact_button {
+    border: 3px solid white;
+    background: transparent;
+    color: white;
+    font-family: "Open Sans";
+    padding: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: background 0.4s ease;
+}
+
+.contact_button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transition: background 0.4s ease;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
