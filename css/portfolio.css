@@ -111,6 +111,29 @@ section {
     align-items: center;
 }
 
+/* TOOLTIPS */
+.tooltip::after {
+    background-color: #333;
+    border-radius: 10px;
+    color: #b254ff;
+    display: none;
+    padding: 10px 15px;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+}
+
+.tooltip.right::after {
+    content: 'right';
+    top: 0;
+    right: 0;
+    transform: translateX(calc(100% + 10px));
+}
+
+.tooltip:hover::after {
+    display: block;
+}
+
 .contact {
     background-color: #23343f;
     max-width: 100%;
@@ -176,7 +199,15 @@ footer {
 }
 
 footer ul {
+    text-align: center;
     margin: 0;
+    font-size: 40px;
+}
+
+footer ul li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 10px 20px;
 }
 
 h2 {
