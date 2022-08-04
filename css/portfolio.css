@@ -3,14 +3,19 @@ body {
     font-family: "Markazi Text";
     padding: 0px;
     margin: 0px;
+    position: relative;
+}
+
+header {
+    position: sticky;
+    top: 0px;
+    z-index: 9999;
 }
 
 nav {
     padding: 20px;
     background-color: #23343f;
     border-bottom: 3px solid orangered;
-    position: sticky;
-    top: 0px;
 }
 
 nav a,
@@ -51,7 +56,7 @@ section {
 
 
 .stacks {
-    background-color: #ffff80;
+    background-color: #e0deb0;
     padding: 100px 20px;
 }
 
@@ -109,6 +114,56 @@ section {
     color: black;
     display: flex;
     align-items: center;
+}
+
+/* CURRENT PROJECTS */
+.current {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.current h1 {
+    width: 100%;
+    text-align: center;
+    font-family: "Marzaki Text";
+    font-size: 40px;
+}
+
+.current a {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.current i {
+    font-size: 40px;
+}
+
+.current span {
+    margin-left: 20px;
+    font-family: "Open Sans";
+}
+
+.project {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 10px;
+    background-color: #d2dee6;
+    color: black;
+    border-radius: 3px;
+}
+
+.project h3 {
+    margin: 0;
+    font-family: "Source Sans Pro";
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.project p {
+    font-size: 16px;
 }
 
 /* TOOLTIPS */

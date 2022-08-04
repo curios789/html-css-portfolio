@@ -8,6 +8,19 @@
         href="https://fonts.googleapis.com/css2?family=Markazi+Text&family=Open+Sans&family=Rubik:wght@700&family=Source+Sans+Pro:wght@900&display=swap"
         rel="stylesheet">
     <link href="css/portfolio.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .modal-header {
+            background-color: #004080;
+            color: white;
+            font-family: "Source Sans Pro";
+            text-transform: uppercase;
+        }
+
+        .modal-body {
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,14 +61,49 @@
     </section>
     <section class='current'>
         <h1>What I'm currently working on....</h1>
+        <div class="project">
+            <h3>React/Redux Coffee Database</h3>
+            <p>A system to save and search coffees and shops by flavor, roasts, etc.</p>
+            <a href="http://github.com/curios789/coffeebase" class="btn btn-success"><i class='fab fa-github'></i>
+                <span>View on Github</span>
+            </a>
+        </div>
+        <div class="project">
+            <h3>React/Redux Debate Software</h3>
+            <p>An online platform for high school debaters to save evidence and take notes in rounds.</p>
+            <a href="http://github.com/curios789/react_tub" class="btn btn-success"><i class='fab fa-github'></i>
+                <span>View on Github</span>
+            </a>
+        </div>
+
     </section>
     <section class="html" id="html">
+        <div class="modal fade " id="portfolio" tabindex="-1" role="dialog" aria-labelledby="important-msg-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="modal-title"></h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <p>Message text</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" id="view_project" class="btn btn-success" target="_blank">View Project</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h2 class="animate">HTML/CSS WORK</h2>
-        <img src="images/profile.webp" alt="NuCamp Profile Page" height="300" />
-        <img src="images/nucamp_bootstrap.webp" alt="NuCamp Bootstrap Page" height="300" />
+        <img src="images/profile.webp" alt="NuCamp Profile Page" height="300" id='profile_page' />
+        <img src="images/nucamp_bootstrap.webp" alt="NuCamp Bootstrap Page" height="300" id="bootstrap_page" />
     </section>
     <section class="react" id="react">
         <h2>REACT WORK</h2>
+        <img src="images/nucamp_react.webp" alt="NuCamp React Page" height="300" id="react_page" />
     </section>
     <section class="contact" id="contact">
         <h1>CONTACT ME</h1>
@@ -89,6 +137,9 @@
             <li><i class="fab fa-facebook"></i></li>
         </ul>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         const observer = new IntersectionObserver(entries => {
             // Loop over the entries
@@ -102,5 +153,29 @@
         });
         console.log(document.querySelector('.animate'))
         observer.observe(document.querySelector('.animate'));
+
+        $(document).ready(function () {
+            $('#profile_page').click(function () {
+                $('#modal-title').html('NuCamp Profile Page')
+                $('#modal-body p').html("This page was made as an assignment for my HTML/CSS Bootcamp. The layout is a combination of flexbox and CSS Grid.")
+                $('#portfolio').modal('show');
+                $('#view_project').attr('href', 'profile.html');
+                $('#view_project').css('display', 'inline');
+            });
+            $('#bootstrap_page').click(function () {
+                $('#modal-title').html('NuCamp Bootstrap Page');
+                $('#modal-body p').html("This website was made as a final assignment for my Bootstrap Bootcamp.<br />")
+                $('#portfolio').modal('show');
+                $('#view_project').attr('href', 'bootstrap/index.html');
+                $('#view_project').css('display', 'inline');
+            });
+            $('#react_page').click(function () {
+                $('#modal-title').text('NuCamp React Page');
+                $('#modal-body').html("This app was made as a final assignment for my React Bootcamp. It uses ReactStrap and Redux.");
+                $('#portfolio').modal('show');
+                $('#view_project').attr('href', '#');
+                $('#view_project').css('display', 'none');
+            })
+        })
     </script>
 </body>
